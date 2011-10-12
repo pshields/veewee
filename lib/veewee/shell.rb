@@ -5,7 +5,7 @@ module Veewee
  
     def self.execute(command,options = {})
 
-      IO.popen("#{command}") { |f| print f }
+      print IO.popen("#{command}").readlines
     end
     
     #pty allows you to gradually see the output of a local command

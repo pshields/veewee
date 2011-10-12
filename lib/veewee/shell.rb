@@ -3,14 +3,14 @@
 module Veewee
   class Shell
  
-    def self.execute2(command,options = {})
+    def self.execute(command,options = {})
 
       IO.popen("#{command}") { |f| print f }
     end
     
     #pty allows you to gradually see the output of a local command
     #http://www.shanison.com/?p=415
-      def self.execute(command, options = {} )
+      def self.execute2(command, options = {} )
         require "pty"
             begin
               PTY.spawn( command ) do |r, w, pid|

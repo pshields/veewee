@@ -4,7 +4,7 @@ module Veewee
   class Shell
  
     def self.execute(command,options = {})
-
+      puts command
       print IO.popen("#{command}").readlines
     end
     

@@ -32,8 +32,8 @@ module Veewee
       filename=filename
       s= HTTPServer.new(
         :Port => options[:port],
-        :Logger => webrick_logger,
-        :AccessLog => webrick_logger
+      #  :Logger => webrick_logger,
+      #  :AccessLog => webrick_logger
       )
       s.mount("/#{filename}", FileServlet,File.join(web_dir,filename))
       trap("INT"){

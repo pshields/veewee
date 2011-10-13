@@ -38,7 +38,7 @@ module Veewee
 
     def self.send_keycode(vboxcmd,vname,keycode)
            command= "#{vboxcmd} controlvm '#{vname}' keyboardputscancode #{keycode}"
-           execute command
+           Veewee::Shell.execute command
     end
 
     def self.string_to_keycode(thestring)

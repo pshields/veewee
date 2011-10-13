@@ -38,8 +38,7 @@ module Veewee
 
     def self.send_keycode(vboxcmd,vname,keycode)
            command= "#{vboxcmd} controlvm '#{vname}' keyboardputscancode #{keycode}"
-           #puts "#{command}"
-                  IO.popen("#{command}") { |f| print '' }
+           execute command
     end
 
     def self.string_to_keycode(thestring)

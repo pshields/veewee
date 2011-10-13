@@ -618,12 +618,7 @@ module Veewee
 	      ##VirtualBox::Global.global.max_vdi_size=1000000
         #newdisk.save
 
-        command="#{@vboxcmd}  list  systemproperties|grep '^Default machine'|cut -d ':' -f 2|sed -e 's/^[ ]*//'"
-        results=IO.popen("#{command}")
-        place=results.gets.chop
-        results.close
-
-        command ="#{@vboxcmd} createhd --filename '#{place}/#{boxname}/#{boxname}.#{@definition[:disk_format].downcase}' --size '#{@definition[:disk_size].to_i}' --format #{@definition[:disk_format].downcase} > /dev/null"
+        command ="#{@vboxcmd} createhd --filename '#{boxname}.#{@definition[:disk_format].downcase}' --size '#{@definition[:disk_size].to_i}' --format #{@definition[:disk_format].downcase}"
         puts "#{command}"
         Veewee::Shell.execute("#{command}")
 

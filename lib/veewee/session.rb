@@ -644,12 +644,6 @@ module Veewee
 
       @vboxcmd=determine_vboxcmd
 
-      command="#{@vboxcmd}  list  systemproperties|grep '^Default machine'|cut -d ':' -f 2|sed -e 's/^[ ]*//'"
-      results=IO.popen("#{command}")
-      place=results.gets.chop
-      results.close
-
-      location="#{place}/#{boxname}/"+location
       puts "Attaching disk: #{location}"
 
       #command => "${vboxcmd} storageattach '${vname}' --storagectl 'SATA Controller' --port 0 --device 0 --type hdd --medium '${vname}.vdi'",

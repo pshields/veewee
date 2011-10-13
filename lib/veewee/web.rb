@@ -26,7 +26,7 @@ module Veewee
 
     def self.wait_for_request(filename,options={:timeout => 10, :web_dir => "", :port => 7125})  
       
-      webrick_logger=WEBrick::Log.new("/dev/null", WEBrick::Log::INFO)
+      # webrick_logger=WEBrick::Log.new("/dev/null", WEBrick::Log::INFO)
       
       web_dir=options[:web_dir]
       filename=filename

@@ -31,7 +31,7 @@ module Veewee
       web_dir=options[:web_dir]
       filename=filename
       s= HTTPServer.new(
-        :Port => options[:port],
+        :Port => options[:port]
       #  :Logger => webrick_logger,
       #  :AccessLog => webrick_logger
       )

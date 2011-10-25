@@ -36,6 +36,7 @@ module Veewee
         :iso_file => "ubuntu-10.10-server-i386.iso", :iso_src => "", :iso_md5 => "", :iso_download_timeout => 1000,
         :boot_wait => "10", :boot_cmd_sequence => [ "boot"],
         :kickstart_port => "7122", :kickstart_ip => self.local_ip, :kickstart_timeout => 10000,
+        :shared_folder_commands => [],
         :ssh_login_timeout => "100",:ssh_user => "vagrant", :ssh_password => "vagrant",:ssh_key => "",
         :ssh_host_port => "2222", :ssh_guest_port => "22",
         :sudo_cmd => "echo '%p'|sudo -S sh '%f'",
@@ -560,9 +561,12 @@ module Veewee
         #Exec and system stop the execution here
         Veewee::Shell.execute("#{command}")
 
-        command="#{@vboxcmd} sharedfolder add  '#{boxname}' --name 'veewee-validation' --hostpath '#{File.expand_path(@validation_dir)}' --automount"
-
-        Veewee::Shell.execute("#{command}")
+        # Add shared folders
+        commands = @definition[:shared_folders_commands]
+        commands.push("#{@vboxcmd} sharedfolder add  '#{boxname}' --name 'veewee-validation' --hostpath '#{File.expand_path(@validation_dir)}' --automount")
+        commands.each{ |command|
+            Veewee::Shell.execute("#{command}")
+        }
 
       end
 

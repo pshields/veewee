@@ -562,7 +562,7 @@ module Veewee
         Veewee::Shell.execute("#{command}")
 
         # Add shared folders
-        commands = @definition[:shared_folders_commands]
+        commands = @definition[:shared_folder_commands]
         commands.push("#{@vboxcmd} sharedfolder add  '#{boxname}' --name 'veewee-validation' --hostpath '#{File.expand_path(@validation_dir)}' --automount")
         commands.each{ |command|
             Veewee::Shell.execute("#{command}")
